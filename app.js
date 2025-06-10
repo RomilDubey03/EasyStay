@@ -3,10 +3,11 @@ const app = express();
 const mongoose = require('mongoose');
 const Listing = require('./models/listing');
 const path = require('path');
+const methodOverride = require('method-override');
 app.set("view-engine", "ejs");
 app.set('views', path.join(__dirname, 'views/listing'));
 app.use(express.urlencoded({ extended: true }));
-
+app.use(methodOverride('_method'));
 
 main()
     .then(() => {
@@ -58,14 +59,14 @@ app.get('/listings/:id', async (req, res) => {
 //create route to handle the form submission for creating a new listing
 app.post('/listings', async (req, res) => {
   try {
-    const { title, description, price, location, images, Country } = req.body;
+    const { title, description, price, location, images, country } = req.body;
     const newListing = new Listing({
       title,
       description,
       price,
       location,
       images,
-      Country
+      country
     });
     await newListing.save();
     res.redirect('/listings');
@@ -75,6 +76,53 @@ app.post('/listings', async (req, res) => {
   }
 });
 
+//edit route to render the form for editing a listing
+app.get('/listings/:id/edit', async (req, res) => {
+  try {
+    const listing = await Listing.findById(req.params.id);
+    if (!listing) {
+      return res.status(404).send('Listing not found');
+    }
+    res.render('edit.ejs', { listing });
+  } catch (error) {
+    console.error('Error fetching listing for edit:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+//update route to handle the form submission for updating a listing
+app.put('/listings/:id', async (req, res) => {
+  try {
+    const { title, description, price, location, images, country } = req.body;
+    const updatedListing = await Listing.findByIdAndUpdate(
+      req.params.id,
+      { title, description, price, location, images, country },
+      { new: true }
+    );
+    console.log('Updated Listing:', updatedListing);
+    if (!updatedListing) {
+      return res.status(404).send('Listing not found');
+    }
+    res.redirect(`/listings/${updatedListing._id}`);
+  } catch (error) {
+    console.error('Error updating listing:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+//delete route to handle the deletion of a listing
+app.delete('/listings/:id', async (req, res) => {
+  try {
+    const deletedListing = await Listing.findByIdAndDelete(req.params.id);
+    if (!deletedListing) {
+      return res.status(404).send('Listing not found');
+    }
+    res.redirect('/listings');
+  } catch (error) {
+    console.error('Error deleting listing:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
 // app.get('/testListings', (req, res) => {
 //     const listing = new Listing({
 //         title: 'Test Listing',

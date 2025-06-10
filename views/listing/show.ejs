@@ -10,7 +10,13 @@
     <p><strong>Price:</strong> <%= listing.price.toLocaleString('en-IN') %> per night</p>
     <p><strong>Description:</strong> <%= listing.description %></p>
     <p><strong>Location:</strong> <%= listing.location %></p>
+    <p><strong>Country:</strong> <%= listing.country %></p>
 
     <a href="/listings">Back to Listings</a>
+    <a href="/listings/<%= listing._id %>/edit">Edit Listing</a>
+
+    <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+        <button type="submit">Delete Listing</button>
+    </form>
 </body>
 </html>
