@@ -22,7 +22,7 @@ const listingSchema = new Schema({
         default: 'https://unsplash.com/photos/buildings-in-a-historic-town-center-Qi_e-n0poRM',
         set : (v) => v == "" ? "default image" : v,
     },
-    Country : {
+    country : {
         type: String,
     }
 });
