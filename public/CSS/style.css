@@ -1,0 +1,22 @@
+/* body {
+    background-color: pink;
+} */
+
+.navbar {
+    background-color: #333 !important; 
+    height: 5rem;
+}
+
+.navbar a {
+    color: white !important;
+    text-decoration: none;
+    padding: 1rem;
+}
+
+fa-compass {
+    color: white !important;
+}
+
+.navbar a:hover {
+    background-color: #555 !important;
+}
