@@ -24,7 +24,6 @@ const listingSchema = new Schema({
     },
     Country : {
         type: String,
-        required: true
     }
 });
 const Listing = mongoose.model('Listing', listingSchema);
