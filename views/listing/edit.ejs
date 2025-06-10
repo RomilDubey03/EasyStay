@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyStay - Edit Your Listing</title>
+</head>
+<body>
+    <h3>Edit Your Listing</h3>
+
+    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT">
+
+        <div>
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" value="<%= listing.title %>" required>
+        </div>
+
+        <div>
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" value="<%= listing.price %>" required>
+        </div>
+
+        <div>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required><%= listing.description %></textarea>
+        </div>
+
+        <div>
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" value="<%= listing.location %>" required>
+        </div>
+
+        <div>
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country" value="<%= listing.country %>" required>
+        </div>
+
+        <button type="submit" >Update Listing</button>
+
+    </form>
+
+    <a href="/listings/<%= listing._id %>">Back to Listing</a>
+</body>
+</html>
