@@ -1,34 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EasyStay - Create Your Listing</title>
-</head>
-<body>
-    <h3>Create Your Listing</h3>
-    <form method="POST"  action="/listings">
-        <div>
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" required>
+<% layout("/layouts/boilerplate") -%>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <br></br>
+            <h3>Create New Listing</h3>
+            <br>
+            <form method="POST" action="/listings"  class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title:</label>
+                    <input class="form-control" type="text" id="title" name="title" required>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description:</label>
+                    <textarea class="form-control" id="description" name="description" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image:</label>
+                    <input class="form-control" id="image" name="image" placeholder="Enter url/link"></input>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Price:</label>
+                            <input class="form-control" type="number" id="price" name="price" required>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="mb-3">
+                            <label for="country" class="form-label">Country:</label>
+                            <input class="form-control" type="text" id="country" name="country" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location:</label>
+                    <input class="form-control" type="text" id="location" name="location" required>
+                </div>
+
+                <br>
+                <br>
+                <button class="btn btn-dark" type="submit">Create Listing</button>
+            </form>
         </div>
-        <div>
-            <label for="price">Price:</label>
-            <input type="number" id="price" name="price" required>
-        </div>
-        <div>
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" required></textarea>
-        </div>
-        <div>
-            <label for="location">Location:</label>
-            <input type="text" id="location" name="location" required>
-        </div>
-        <div>
-            <label for="country">Country:</label>
-            <input type="text" id="country" name="country" required>
-        </div>
-        <button type="submit">Create Listing</button>
-    </form>
-</body>
-</html>
+    </div>
