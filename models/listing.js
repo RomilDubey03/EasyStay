@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+
 const listingSchema = new Schema({
     title: {
         type: String,
@@ -17,15 +18,26 @@ const listingSchema = new Schema({
         type: String,
         required: true
     },
-    images: {
-        type: String,
-        default: 'https://unsplash.com/photos/buildings-in-a-historic-town-center-Qi_e-n0poRM',
-        set : (v) => v == "" ? "default image" : v,
+    image: {
+        type: String
     },
-    country : {
+    country: {
         type: String,
+    },
+    reviews: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Review'
+    }]
+});
+//middleware to delete associated reviews when a listing is deleted
+listingSchema.post('findOneAndDelete', async function (listing) {
+    if (listing) {
+        const Review = require('./review'); // Import Review model
+        await Review.deleteMany({ _id: { $in: listing.reviews } });
     }
 });
+
+
 const Listing = mongoose.model('Listing', listingSchema);
 module.exports = Listing;
 

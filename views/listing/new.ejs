@@ -4,42 +4,64 @@
             <br></br>
             <h3>Create New Listing</h3>
             <br>
-            <form method="POST" action="/listings"  class="needs-validation" novalidate>
+            <form method="POST" action="/listings" class="needs-validation" novalidate>
                 <div class="mb-3">
                     <label for="title" class="form-label">Title:</label>
-                    <input class="form-control" type="text" id="title" name="title" required>
+                    <input class="form-control" type="text" id="title" name="listing[title]" required>
+
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description:</label>
-                    <textarea class="form-control" id="description" name="description" required></textarea>
+                    <textarea class="form-control" id="description" name="listing[description]" required></textarea>
+
+                    <div class="invalid-feedback">
+                        Please enter a description.
+                    </div>
                 </div>
+
                 <div class="mb-3">
-                    <label for="image" class="form-label">Image:</label>
-                    <input class="form-control" id="image" name="image" placeholder="Enter url/link"></input>
+                    <label for="imageUrl" class="form-label">Image URL:</label>
+                    <input id="imageUrl" name="listing[image]" required class="form-control">
+                    <div class="invalid-feedback">Please enter image url.</div>
                 </div>
+
+
+
                 <div class="row">
                     <div class="col-md-4">
                         <div class="mb-3">
                             <label for="price" class="form-label">Price:</label>
-                            <input class="form-control" type="number" id="price" name="price" required>
+                            <input class="form-control" id="price" name="listing[price]" required>
+
+                            <div class="invalid-feedback">
+                                Please enter valid price.
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-8">
                         <div class="mb-3">
                             <label for="country" class="form-label">Country:</label>
-                            <input class="form-control" type="text" id="country" name="country" required>
+                            <input class="form-control" type="text" id="country" name="listing[country]" required>
+
+                            <div class="invalid-feedback">
+                                Please enter valid country.
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="location" class="form-label">Location:</label>
-                    <input class="form-control" type="text" id="location" name="location" required>
-                </div>
+                    <input class="form-control" type="text" id="location" name="listing[location]" required>
 
-                <br>
-                <br>
-                <button class="btn btn-dark" type="submit">Create Listing</button>
+                    <div class="invalid-feedback">
+                        Please enter valid location.
+                    </div>
+                </div>
+                <button class="btn btn-dark mt-3" type="submit">Create Listing</button>
             </form>
         </div>
     </div>
