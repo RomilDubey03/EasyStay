@@ -10,7 +10,7 @@ const validateListing = (req, res, next) => {
     const { error } = listingSchema.validate(req.body);
     if (error) {
         const msg = error.details.map(el => el.message).join(', ');
-        console.log('🎯 Validation failed:', msg);
+        console.log('Validation failed:', msg);
         throw new ExpressError(msg, 400);
     } else {
         next();
@@ -31,20 +31,23 @@ router.post('/', validateListing, wrapAsync(async (req, res, next) => {
   const {listing} = req.body;
   const newListing = new Listing(listing);
   await newListing.save();
+  req.flash('success', 'Listing created successfully!');
   res.redirect('/listings');
 }));
 
 router.get('/:id', wrapAsync(async (req, res, next) => {
   const listing = await Listing.findById(req.params.id).populate('reviews');
   if (!listing) {
-    throw new ExpressError('Listing not found', 404);
+    req.flash('error', 'Listing not found or may have been deleted.');
+    return res.redirect('/listings');
   }
   res.render('listing/show.ejs', { listing });
 }));
 router.get('/:id/edit', wrapAsync(async (req, res) => {
   const listing = await Listing.findById(req.params.id);
   if (!listing) {
-    throw new ExpressError('Listing not found', 404);
+    req.flash('error', 'Listing not found or may have been deleted.');
+    return res.redirect('/listings');
   }
   res.render('listing/edit.ejs', { listing });
 }));
@@ -55,6 +58,7 @@ router.put('/:id', validateListing, wrapAsync(async (req, res) => {
   if (!listing) {
     throw new ExpressError('Listing not found', 404);
   }
+  req.flash('success', 'Listing updated successfully!');
   res.redirect(`/listings/${listing._id}`);
 }));
 
@@ -64,6 +68,7 @@ router.delete('/:id', wrapAsync(async (req, res) => {
   if (!listing) {
     throw new ExpressError('Listing not found', 404);
   }
+  req.flash('success', 'Listing deleted successfully!');
   res.redirect('/listings');
 }));
 
