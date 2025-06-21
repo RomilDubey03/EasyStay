@@ -6,6 +6,11 @@ const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
 const session = require('express-session');
 const flash = require('connect-flash');
+const User = require('./models/user'); // Import User model
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+
+
 
 // Middleware for session management
 const sessionConfig = {
@@ -21,6 +26,12 @@ const sessionConfig = {
 };
 app.use(session(sessionConfig));
 app.use(flash());
+// Passport configuration
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate())); // Use LocalStrategy for authentication
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // Basic setup
 app.engine('ejs', ejsMate);
@@ -39,11 +50,12 @@ app.use((req, res, next) => {
 });
 
 // Importing routes
-const listings = require('./routes/listings.js');
-const reviews = require('./routes/reviews.js');
-app.use('/listings', listings);
-app.use('/listings/:id/reviews', reviews);
-
+const listingRouter = require('./routes/listings.js');
+const reviewsRouter = require('./routes/reviews.js');
+const userRouter = require('./routes/users.js');
+app.use('/listings', listingRouter);
+app.use('/listings/:id/reviews', reviewsRouter);
+app.use('/users', userRouter);
 
 // Database connection
 main()
@@ -57,9 +69,9 @@ async function main() {
 }
 
 app.use((err, req, res, next) => {
-    const { statusCode = 500 } = err;
-    if (!err.message) err.message = "Something went wrong!";
-    res.status(statusCode).render("error.ejs", { error: err.message });
+  const { statusCode = 500 } = err;
+  if (!err.message) err.message = "Something went wrong!";
+  res.status(statusCode).render("error.ejs", { error: err.message });
 });
 
 

@@ -1,4 +1,5 @@
 body{
+    background-color: #f8f9fa !important;
     font-family: 'Plus Jakarta Sans', sans-serif !important;
     display: flex;
     flex-direction: column;
@@ -29,12 +30,14 @@ fa-compass {
 }
 
 .navbar a:hover {
-    background-color: #555 !important;
+    /* background-color:#032f3c !important; */
+    background-color: 	#004e52 !important;
 }
 
 /* Default navbar styles */
 .navbar {
-  background-color: #343a40 !important; /* dark background */
+  /* background-color: #032f3c !important; /*dark background */
+  background-color: 	#004e52 !important;  
 }
 
 .navbar .navbar-nav .nav-link {
@@ -92,7 +95,7 @@ footer, .f-info {
 
 .f-info {
     height: 8rem;
-    background-color: #ebebeb;
+    background-color: #8abbbb !important;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -106,6 +109,7 @@ footer, .f-info {
 
 .listing-card {
     border: none !important;
+    background-color: #f8f9fa !important;
     margin-bottom: 2rem;
 }
 
@@ -143,9 +147,9 @@ footer, .f-info {
     height: 30vh !important;
 }   
 
-.card{
+/* .card{
     border: none !important;
-}
+} */
 
 .btns{
     display: flex;
@@ -154,4 +158,11 @@ footer, .f-info {
 .show-card{
     padding-left: 0 !important;
     padding-right: 0 !important;
+}
+
+/* Register */
+
+.register-card{
+    border: 0.1rem solid #343a40 !important;
+    border-radius: 0.75rem !important;
 }
