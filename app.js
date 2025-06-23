@@ -9,21 +9,9 @@ const flash = require('connect-flash');
 const User = require('./models/user'); // Import User model
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
+const { sessionConfig } = require('./middleware.js'); // Import session configuration
 
 
-
-// Middleware for session management
-const sessionConfig = {
-  secret: 'thisshouldbeabettersecret',
-  resave: false,
-  saveUninitialized: true,
-  cookie: {
-    httpOnly: true,
-    // secure: true, // Uncomment if using HTTPS
-    expires: Date.now() + 1000 * 60 * 60 * 24 * 7, // 1 week
-    maxAge: 1000 * 60 * 60 * 24 * 7
-  }
-};
 app.use(session(sessionConfig));
 app.use(flash());
 // Passport configuration
@@ -46,6 +34,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use((req, res, next) => {
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
+  res.locals.currUser = req.user; // Make current user available in all views
   next();
 });
 
@@ -55,9 +44,8 @@ const reviewsRouter = require('./routes/reviews.js');
 const userRouter = require('./routes/users.js');
 app.use('/listings', listingRouter);
 app.use('/listings/:id/reviews', reviewsRouter);
-app.use('/users', userRouter);
+app.use('/', userRouter);
 
-// Database connection
 main()
   .then(() => {
     console.log('Connected to MongoDB');
@@ -73,7 +61,6 @@ app.use((err, req, res, next) => {
   if (!err.message) err.message = "Something went wrong!";
   res.status(statusCode).render("error.ejs", { error: err.message });
 });
-
 
 const port = 3000;
 app.listen(port, () => {

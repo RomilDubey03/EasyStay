@@ -15,6 +15,10 @@ const reviewSchema = new Schema({
     createdAt: {
         type: Date,
         default: Date().now  // Automatically set to current date/time when a review is created
+    },
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',  // Reference to the User model
     }
 });
 

@@ -1,21 +1,53 @@
 <% layout("/layouts/boilerplate") -%>
 
-
-        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3" >
-    <% for(let listing of listings) { %>
-        <a href="/listings/<%= listing._id %>" class="listing-link">
-            <div class="card col listing-card">
-                <img src="<%= listing.image %>" class="card-img-top" alt="listing_image" style="height: 20rem;">
-                <div class="card-img-overlay"></div>
-                <div class="card-body">
-                    <p class="card-text">
-                    <b><%= listing.title %></b> <br>
-                    &#8377; <%= listing.price.toLocaleString("en-IN") %> /night
-                    <i class="tax-info"> &nbsp; &nbsp;+18% GST</i>
-                </p>
-                </div>
-            </div>
-        </a>
-    <% } %>
+<!-- Search Bar Below Navbar -->
+<div class="container mt-4 mb-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6 col-lg-8">
+      <form class="d-flex" method="GET" action="/listings/search" onsubmit="return false;">
+        <input class="form-control form-control-sm me-2 search-rounded" type="search" name="q" id="live-search-input" placeholder="Search by price, title, location, or country..." aria-label="Search" autocomplete="off">
+        <button class="btn btn-outline-dark btn-sm search-btn-rounded" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
 </div>
-    
+
+
+
+<div id="listings-container">
+  <% if (typeof searchQuery !== 'undefined' && (!listings || listings.length === 0)) { %>
+    <div class="alert alert-warning text-center">No listings found for "<%= searchQuery %>".</div>
+  <% } %>
+
+  <div class="row row-cols-lg-5 row-cols-md-3 row-cols-sm-1 mt-3" >
+      <% for(let listing of listings) { %>
+          <a href="/listings/<%= listing._id %>" class="listing-link">
+              <div class="card col listing-card body-listings-index-listing-card">
+                  <img src="<%= listing.image %>" class="card-img-top body-listings-index-listing-img" alt="listing_image" style="height: 20rem;">
+                  <div class="card-img-overlay"></div>
+                  <div class="card-body">
+                      <p class="card-text">
+                      <b><%= listing.title %></b> <br>
+                      &#8377; <%= listing.price.toLocaleString("en-IN") %> /night
+                      <i class="tax-info"> &nbsp; &nbsp;</i>
+                  </p>
+                  </div>
+              </div>
+          </a>
+      <% } %>
+  </div>
+</div>
+
+<script>
+document.getElementById('live-search-input').addEventListener('input', function() {
+  const query = this.value;
+  fetch(`/listings/search?q=${encodeURIComponent(query)}`)
+    .then(res => res.text())
+    .then(html => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      const newListings = doc.getElementById('listings-container').innerHTML;
+      document.getElementById('listings-container').innerHTML = newListings;
+    });
+});
+</script>
