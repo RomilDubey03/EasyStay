@@ -29,6 +29,8 @@ async function seedDB() {
 
   for (let listingData of data) {
     const listing = new Listing(listingData);
+    let ownerId = '685672f590b91b401ec87455';
+    listing.owner = ownerId; // Set a default owner ID for all listings
     // Create 4 reviews for each listing, each from a different user
     for (let i = 0; i < 4; i++) {
       const user = users[i % users.length];

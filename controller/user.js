@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const passport = require('passport');
+const ExpressError = require('../utils/ExpressError');
 
 // Render registration form
 module.exports.registerForm = (req, res) => {

@@ -14,7 +14,6 @@ async function main() {
 async function init() {
   try {
     await Listing.deleteMany({}); // Clear existing listings
-    initData.data = initData.data.map((obj) => ({...obj, owner : '685672f590b91b401ec87455'})); // Set a default owner ID for all listings)
     await Listing.insertMany(initData.data);
     console.log('Database initialized with test data');
   } catch (error) {

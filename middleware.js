@@ -1,7 +1,5 @@
-
+const ExpressError = require('./utils/ExpressError');
 const Listing = require('./models/listing');
-const currUser = require('./models/user.js');
-const mongoose = require('mongoose');
 const { reviewSchema } = require('./Schema.js');
 const { listingSchema } = require('./Schema.js');
 const Review = require('./models/review');
