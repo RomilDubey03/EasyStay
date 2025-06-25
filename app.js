@@ -47,12 +47,11 @@ passport.deserializeUser(User.deserializeUser());
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 // Fix for Vercel: use correct root path for views and static files
-const rootDir = path.resolve(__dirname, '..');
-app.set("views", path.join(rootDir, "views"));
+app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride("_method"));
-app.use(express.static(path.join(rootDir, "public")));
+app.use(express.static(path.join(__dirname, "public")));
 
 // Flash middleware to make flash messages available in all views
 app.use((req, res, next) => {
@@ -80,18 +79,13 @@ async function main() {
   await mongoose.connect(dbUrl);
 }
 
-app.get("/easystay", (req, res) => {
-  res.render("home.ejs");
-});
 app.use((err, req, res, next) => {
   const { statusCode = 500 } = err;
   if (!err.message) err.message = "Something went wrong!";
   res.status(statusCode).render("error.ejs", { error: err.message });
 });
 
-// const port = 3000;
-// app.listen(port, () => {
-//   console.log(`Server is running on http://localhost:${port}`);
-// });
-
-module.exports = app; // Export the app for testing purposes
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
