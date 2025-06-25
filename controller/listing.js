@@ -1,17 +1,17 @@
-const Listing = require("../models/listing");
+const Listing = require("../models/listing.js");
 const mbxClient = require("@mapbox/mapbox-sdk");
 const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const mapToken = process.env.MAP_API_KEY; // Ensure you have set this environment variable
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
-const ExpressError = require("../utils/ExpressError");
+const ExpressError = require("../utils/ExpressError.js");
 const { listingSchema } = require("../Schema.js");
 module.exports.index = async (req, res) => {
   const listings = await Listing.find({});
   res.render("listing/index.ejs", { listings });
 };
-const Review = require("../models/review");
-const User = require("../models/user");
+const Review = require("../models/review.js");
+const User = require("../models/user.js");
 
 module.exports.search = async (req, res) => {
   const { q } = req.query;

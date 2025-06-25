@@ -1,7 +1,7 @@
 const router = require("express").Router({ mergeParams: true });
 const { isLoggedIn, isOwner, validateListing } = require("../middleware.js");
 const wrapAsync = require("../utils/wrapAsync");
-const listingController = require("../Controller/listing.js");
+const listingController = require("../controller/listing.js");
 const ExpressError = require("../utils/ExpressError.js");
 const Listing = require("../models/listing.js");
 const multer = require("multer");
