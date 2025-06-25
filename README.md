@@ -57,9 +57,9 @@ From there, you can register, login, browse listings, write reviews, and book st
 ## 👤 Author
 
 **Romil Dubey**  
-GitHub: [@your-github](https://github.com/your-username)  
-Email: your.email@example.com
+GitHub: [@your-github](https://github.com/RomilDubey03)  
+Email: romildubey03@gmail.com
 
 ## 📄 License
 
-This project is open-source and available under the [MIT License](LICENSE).
+This project is open-source.
