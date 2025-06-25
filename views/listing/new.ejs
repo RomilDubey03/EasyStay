@@ -1,71 +1,88 @@
 <% layout("/layouts/boilerplate") -%>
-    <div class="row">
-        <div class="col-8 offset-2">
-            <br></br>
-            <h3>Create New Listing</h3>
-            <br>
-            <form method="POST" action="/listings" class="needs-validation" novalidate enctype="multipart/form-data">
-                <div class="mb-3">
-                    <label for="title" class="form-label">Title:</label>
-                    <input class="form-control" type="text" id="title" name="listing[title]" required>
-
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="description" class="form-label">Description:</label>
-                    <textarea class="form-control" id="description" name="listing[description]" required></textarea>
-
-                    <div class="invalid-feedback">
-                        Please enter a description.
-                    </div>
-                </div>
-
-                <!-- <div class="mb-3">
-                    <label for="imageUrl" class="form-label">Image URL:</label>
-                    <input id="imageUrl" name="listing[image]" required class="form-control">
-                    <div class="invalid-feedback">Please enter image url.</div>
-                </div> -->
-
-                <div class="mb-3">
-                    <label for="imageUrl" class="form-label">Image URL:</label>
-                    <input type="file" id="imageUrl" name="listing[image]" required class="form-control">
-                    <div class="invalid-feedback">Please enter image url.</div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="mb-3">
-                            <label for="price" class="form-label">Price:</label>
-                            <input class="form-control" id="price" name="listing[price]" required>
-
-                            <div class="invalid-feedback">
-                                Please enter valid price.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="mb-3">
-                            <label for="country" class="form-label">Country:</label>
-                            <input class="form-control" type="text" id="country" name="listing[country]" required>
-
-                            <div class="invalid-feedback">
-                                Please enter valid country.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="location" class="form-label">Location:</label>
-                    <input class="form-control" type="text" id="location" name="listing[location]" required>
-
-                    <div class="invalid-feedback">
-                        Please enter valid location.
-                    </div>
-                </div>
-                <button class="btn btn-dark mt-3" type="submit">Create Listing</button>
-            </form>
-        </div>
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+  <div
+    class="register-card p-4 shadow-lg w-100"
+    style="max-width: 540px; min-width: 340px"
+  >
+    <div class="text-center mb-4">
+      <h3 class="fw-bold">Create New Listing</h3>
     </div>
+    <form
+      method="POST"
+      action="/listings"
+      class="needs-validation d-flex flex-column gap-3"
+      novalidate
+      enctype="multipart/form-data"
+    >
+      <div class="mb-2 d-flex flex-column align-items-start">
+        <label for="title" class="form-label">Title:</label>
+        <input
+          class="form-control"
+          type="text"
+          id="title"
+          name="listing[title]"
+          required
+        />
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-2 d-flex flex-column align-items-start">
+        <label for="description" class="form-label">Description:</label>
+        <textarea
+          class="form-control"
+          id="description"
+          name="listing[description]"
+          required
+        ></textarea>
+        <div class="invalid-feedback">Please enter a description.</div>
+      </div>
+      <div class="mb-2 d-flex flex-column align-items-start">
+        <label for="imageUrl" class="form-label">Image:</label>
+        <input
+          type="file"
+          id="imageUrl"
+          name="listing[image]"
+          required
+          class="form-control"
+        />
+        <div class="invalid-feedback">Please upload an image.</div>
+      </div>
+      <div class="row w-100">
+        <div class="col-md-4 mb-2 d-flex flex-column align-items-start">
+          <label for="price" class="form-label">Price:</label>
+          <input
+            class="form-control"
+            id="price"
+            name="listing[price]"
+            required
+          />
+          <div class="invalid-feedback">Please enter valid price.</div>
+        </div>
+        <div class="col-md-8 mb-2 d-flex flex-column align-items-start">
+          <label for="country" class="form-label">Country:</label>
+          <input
+            class="form-control"
+            type="text"
+            id="country"
+            name="listing[country]"
+            required
+          />
+          <div class="invalid-feedback">Please enter valid country.</div>
+        </div>
+      </div>
+      <div class="mb-2 d-flex flex-column align-items-start">
+        <label for="location" class="form-label">Location:</label>
+        <input
+          class="form-control"
+          type="text"
+          id="location"
+          name="listing[location]"
+          required
+        />
+        <div class="invalid-feedback">Please enter valid location.</div>
+      </div>
+      <button class="btn btn-dark w-100 mt-2" type="submit">
+        Create Listing
+      </button>
+    </form>
+  </div>
+</div>
