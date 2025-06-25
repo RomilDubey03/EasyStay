@@ -61,6 +61,8 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get('/', (req, res) => res.redirect('/listings'));
+
 // Importing routes
 const listingRouter = require("./routes/listings.js");
 const reviewsRouter = require("./routes/reviews.js");
