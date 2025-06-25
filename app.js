@@ -46,11 +46,13 @@ passport.deserializeUser(User.deserializeUser());
 // Basic setup
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+// Fix for Vercel: use correct root path for views and static files
+const rootDir = path.resolve(__dirname, '..');
+app.set("views", path.join(rootDir, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride("_method"));
-app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.static(path.join(rootDir, "public")));
 
 // Flash middleware to make flash messages available in all views
 app.use((req, res, next) => {
