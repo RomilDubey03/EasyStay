@@ -1,2 +1,6 @@
 const app = require('../app');
-module.exports = app;
+
+// Vercel expects a function handler: (req, res) => {}
+module.exports = (req, res) => {
+  app(req, res);
+};

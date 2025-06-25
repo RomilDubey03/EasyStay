@@ -87,9 +87,9 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error.ejs", { error: err.message });
 });
 
-const port = 3000;
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+// const port = 3000;
+// app.listen(port, () => {
+//   console.log(`Server is running on http://localhost:${port}`);
+// });
 
 module.exports = app; // Export the app for testing purposes
