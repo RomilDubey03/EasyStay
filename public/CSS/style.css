@@ -256,3 +256,25 @@ footer, .f-info {
   width: 113.7vh !important;
 }
 
+  /* Responsive map container */
+  #map.map-style {
+    width: 100% !important;
+    min-height: 180px;
+    height: 45vw;
+    max-height: 350px;
+    border-radius: 1rem;
+  }
+  @media (max-width: 576px) {
+    #map.map-style {
+      height: 220px;
+      min-height: 120px;
+      max-height: 250px;
+    }
+  }
+  @media (min-width: 992px) {
+    #map.map-style {
+      height: 300px;
+      min-height: 200px;
+      max-height: 350px;
+    }
+  }

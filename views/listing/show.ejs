@@ -6,19 +6,26 @@
 
 <div class="container py-4">
   <div class="row justify-content-center">
-    <div class="col-lg-8 col-md-10">
+    <div class="col-12 col-md-10 col-lg-8">
       <div class="card shadow-lg rounded-4 mb-4 show-page-card w-100">
         <img
           src="<%= listing.image.url %>"
-          class="card-img-top show-img rounded-top-4"
+          class="card-img-top show-img rounded-top-4 img-fluid"
           alt="Listing Image"
-          style="object-fit: cover; height: 500px"
+          style="
+            object-fit: cover;
+            height: 45vw;
+            max-height: 500px;
+            min-height: 220px;
+          "
         />
         <div class="card-body">
-          <h3 class="card-title mb-3 text-center fw-bold">
+          <h3 class="card-title mb-3 text-center fw-bold fs-4 fs-md-3 fs-lg-2">
             <%= listing.title %>
           </h3>
-          <div class="d-flex justify-content-between align-items-center mb-2">
+          <div
+            class="d-flex flex-column flex-sm-row justify-content-between align-items-center mb-2 gap-2"
+          >
             <span class="fs-6"
               ><strong>Price: </strong>₹<%=
               listing.price.toLocaleString('en-IN') %>
@@ -34,11 +41,11 @@
         <% if(currUser && listing.owner && String(listing.owner._id) ===
         String(currUser._id)) { %>
         <div
-          class="card-footer bg-white border-0 d-flex justify-content-end gap-2"
+          class="card-footer bg-white border-0 d-flex flex-column flex-sm-row justify-content-end gap-2"
         >
           <a
             href="/listings/<%= listing._id %>/edit"
-            class="btn btn-outline-dark"
+            class="btn btn-outline-dark mb-2 mb-sm-0"
             >Edit
           </a>
           <form
@@ -121,7 +128,9 @@
             ></textarea>
             <div class="invalid-feedback">Please provide a review comment.</div>
           </div>
-          <button class="btn btn-outline-dark">Submit Review</button>
+          <button class="btn btn-outline-dark w-100 w-md-auto">
+            Submit Review
+          </button>
         </form>
         <% } %> <% let userReviews=[], otherReviews=[]; if (currUser &&
         listing.reviews && listing.reviews.length> 0) { for (let review of
@@ -135,7 +144,7 @@
         <div class="row g-3">
           <% if (listing.reviews && listing.reviews.length> 0) { %> <% for(let
           review of allReviews) { %>
-          <div class="col-12">
+          <div class="col-12 col-md-6">
             <div class="card shadow-sm rounded-3 mb-3 w-100">
               <div class="card-body">
                 <h6 class="card-subtitle mb-2 mt-2 text-muted">
@@ -175,7 +184,11 @@
 
       <div class="bg-white p-4 rounded-4 shadow-sm mt-4">
         <h5 class="mb-3">Where you’ll be</h5>
-        <div id="map" class="map-style mb-2" style="height: 300px"></div>
+        <div
+          id="map"
+          class="map-style mb-2 w-100"
+          style="height: 45vw; max-height: 300px; min-height: 180px"
+        ></div>
       </div>
     </div>
   </div>
