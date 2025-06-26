@@ -1,27 +1,32 @@
 {
   "version": 2,
-  "builds": [{ "src": "api/*.js", "use": "@vercel/node" }],
+  "builds": [
+    {
+      "src": "api/*.js",
+      "use": "@vercel/node"
+    }
+  ],
   "routes": [
     {
-      "src": "/(.*)",
+      "source": "/(.*)",
       "has": [{ "type": "file", "src": "public/$1" }],
-      "dest": "/public/$1"
+      "destination": "/public/$1"
     },
 
     {
-      "src": "^/$",
+      "source": "^/$",
       "status": 302,
       "headers": { "Location": "/listings" }
     },
 
     {
-      "src": "^/listings(?:/.*)?$",
-      "dest": "api/listings.js"
+      "source": "^/listings(?:/.*)?$",
+      "destination": "api/listings.js"
     },
 
     {
-      "src": "^/(?:login|register)(?:/.*)?$",
-      "dest": "api/listings.js"
+      "source": "^/(?:login|register)(?:/.*)?$",
+      "destination": "api/listings.js"
     }
   ]
 }
