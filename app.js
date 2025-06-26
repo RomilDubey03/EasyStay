@@ -60,7 +60,9 @@ app.use((req, res, next) => {
   res.locals.currUser = req.user; // Make current user available in all views
   next();
 });
-
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
 // Importing routes
 const listingRouter = require("./routes/listings.js");
 const reviewsRouter = require("./routes/reviews.js");
