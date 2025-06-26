@@ -63,6 +63,7 @@
 </div>
 
 <script>
+  // Live search logic
   document
     .getElementById("live-search-input")
     .addEventListener("input", function () {
@@ -77,4 +78,18 @@
           document.getElementById("listings-container").innerHTML = newListings;
         });
     });
+
+  // Disable create listing button after one click
+  document.addEventListener('DOMContentLoaded', function() {
+    const createForm = document.querySelector('form[action="/listings"]');
+    if (createForm) {
+      createForm.addEventListener('submit', function(e) {
+        const submitBtn = createForm.querySelector('button[type="submit"]');
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.innerText = 'Creating...';
+        }
+      });
+    }
+  });
 </script>
