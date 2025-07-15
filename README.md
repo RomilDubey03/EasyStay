@@ -18,6 +18,33 @@
 - Interactive Map Integration for Location Display
 - Cloud Storage for Image Uploads
 
+## 📸 Project Screenshots
+
+<p align="center">
+  <img src="./public/assets/Screenshot(113)" alt="Homepage" width="600"/>
+  <br><em>🏠 Homepage View</em>
+</p>
+
+<p align="center">
+  <img src="./public/assets/Screenshot(113)" alt="Listings Page" width="600"/>
+  <br><em>📍 Stay Listings</em>
+</p>
+
+<p align="center">
+  <img src="./public/assets/Screenshot(113)" alt="Stay Detail Page" width="600"/>
+  <br><em>🛏️ Stay Detail Page</em>
+</p>
+
+<p align="center">
+  <img src="./public/assets/Screenshot(113)" alt="Booking Page" width="600"/>
+  <br><em>📅 Booking Interface</em>
+</p>
+
+<p align="center">
+  <img src="./public/assets/Screenshot(113)" alt="Review Section" width="600"/>
+  <br><em>⭐ Review & Rating Section</em>
+</p>
+
 ## 🔧 Installation
 
 To run the project locally:
