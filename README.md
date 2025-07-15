@@ -21,28 +21,22 @@
 ## 📸 Project Screenshots
 
 <p align="center">
-  <img src="public/assets/Screenshot (113).png" alt="Homepage" width="600"/>
-  <br><em>🏠 Homepage View</em>
-</p>
-
-<p align="center">
   <img src="./public/assets/Screenshot (113).png" alt="Listings Page" width="600"/>
   <br><em>📍 Stay Listings</em>
 </p>
 
+<h3 align="center">🔐 Register & Login Screens</h3>
+
 <p align="center">
-  <img src="./public/assets/Screenshot(113)" alt="Stay Detail Page" width="600"/>
+  <img src="./public/assets/Screenshot (120).png" alt="Register Page" width="45%" style="margin-right:10px;"/>
+  <img src="./public/assets/Screenshot (116).png" alt="Login Page" width="45%"/>
+</p>
+
+<p align="center">
+  <img src="./public/assets/Screenshot (114).png" alt="Stay Detail Page" width="600"/>
+  <img src="./public/assets/Screenshot (117).png" alt="Stay Detail Page" width="600"/>
+  <img src="./public/assets/Screenshot (115).png" alt="Stay Detail Page" width="600"/>
   <br><em>🛏️ Stay Detail Page</em>
-</p>
-
-<p align="center">
-  <img src="./public/assets/Screenshot(113)" alt="Booking Page" width="600"/>
-  <br><em>📅 Booking Interface</em>
-</p>
-
-<p align="center">
-  <img src="./public/assets/Screenshot(113)" alt="Review Section" width="600"/>
-  <br><em>⭐ Review & Rating Section</em>
 </p>
 
 ## 🔧 Installation
