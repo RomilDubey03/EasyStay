@@ -21,12 +21,12 @@
 ## 📸 Project Screenshots
 
 <p align="center">
-  <img src="./public/assets/Screenshot(113)" alt="Homepage" width="600"/>
+  <img src="public/assets/Screenshot(113).png" alt="Homepage" width="600"/>
   <br><em>🏠 Homepage View</em>
 </p>
 
 <p align="center">
-  <img src="./public/assets/Screenshot(113)" alt="Listings Page" width="600"/>
+  <img src="./public/assets/Screenshot(113).png" alt="Listings Page" width="600"/>
   <br><em>📍 Stay Listings</em>
 </p>
 
